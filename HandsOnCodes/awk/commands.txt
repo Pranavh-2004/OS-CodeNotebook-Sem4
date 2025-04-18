@@ -1,0 +1,32 @@
+# Simple print using awk
+awk '{print $1,$4}' employee.txt
+
+# Find lines with manager
+awk /manager/'{print}' employee.txt
+
+# Identify lines that satisfy a condition
+awk '{if($4 > "30000") print $1,$4}' employee.txt
+awk '{if($4 > "30000") print NR,$1,$4}' employee.txt
+awk '{if($4 > "30000") count++} END {print count}' employee.txt
+
+# Functions with awk - upper, lower, substr
+awk /manager/'{print substr($1,1,4)}' employee.txt
+awk /manager/'{print toupper($1)}' employee.txt
+awk /manager/'{print tolower($1)}' employee.txt
+awk /manager/'{print toupper(substr($1,1,4) substr($1,2))}' employee.txt
+
+# No of lines in a file
+awk 'END { print NR }' employee.txt
+
+# No of fileds in a file
+awk 'BEGIN {FS=""} END {print NF}' employee.txt
+
+# Identify lines that satisfy multiple conditions
+awk '{if($4 > "30000" && $2 == "manager") print $1,$2,$4}' employee.txt
+awk '{if($4 > "30000" && $2 != "manager") print $1,$2,$4}' employee.txt
+awk '{if($4 > "30000" || $2 == "manager") print $1,$2,$4}' employee.txt
+awk '{if($4 > "30000" || $2 == "manager") print $1,$2,$4,$4*1.1;}' employee.txt
+
+# Identify unique values of attribute
+awk '{print $2}' employee.txt | sort | uniq
+awk '{print $3}' employee.txt | sort | uniq

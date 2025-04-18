@@ -1,0 +1,23 @@
+FROM ubuntu:22.04
+
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    make \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy source files
+COPY parent_process.c Makefile_parent process_monitor.c ./
+
+# Rename Makefile and build parent process
+RUN mv Makefile_parent Makefile && \
+    make && \
+    gcc -o process_monitor process_monitor.c
+
+# Provide a shell by default
+ENTRYPOINT ["/bin/bash"]

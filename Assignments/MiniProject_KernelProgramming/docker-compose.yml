@@ -1,0 +1,23 @@
+version: "3"
+services:
+  parent_process:
+    build:
+      context: .
+      dockerfile: Dockerfile_parent
+    container_name: parent_process
+    depends_on:
+      - kernel_module
+    privileged: true
+    stdin_open: true
+    tty: true
+
+  kernel_module:
+    build:
+      context: .
+      dockerfile: Dockerfile_kernel
+    container_name: kernel_module
+    privileged: true
+    volumes:
+      - .:/workspace
+    stdin_open: true
+    tty: true

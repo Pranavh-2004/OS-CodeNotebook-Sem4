@@ -1,0 +1,78 @@
+# Linux sed syntax 
+sed OPTIONS... [SCRIPT] [INPUTFILE...]
+
+# Replace all occurrences of ‘hello’ to ‘world’
+sed 's/hello/world/' input.txt > output.txt 
+
+# Use -i to edit files in-place instead of printing to standard output
+sed -i 's/hello/world/' file.txt
+
+# The -f options are used to specify a script
+sed -f myscript.sed input.txt > output.txt
+sed --expression='s/hello/world/' input.txt > output.txt
+sed -i --expression='s/hello/world/' input.txt
+
+# Print first and last lines
+sed -n '1p ; $p' one.txt two.txt three.txt
+# Output 
+.venvpranavhemanth@Pranavs-MacBook-Pro-M3 sed %sed -n '1p ; $p' one.txt two.txt three.txt
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.%     
+
+# Print all input until a line starting with the word ‘foo’. 
+# If not terminate with exit status 42
+sed '/^foo/q42' input.txt > output.txt
+
+# deleting any lines matching the regular expression /^foo/, and replacing all occurrences of the string ‘hello’ with ‘world’
+sed '/^foo/d ; s/hello/world/' input.txt > output.txt
+
+#############################################################################################################################
+# sed.odt from sir 
+
+# View file
+cat employee.txt
+
+# Replace the word 'manager' with 'Manager'
+sed -n 's/manager/Manager/p' employee.txt
+
+# Replace the word 'manager' with 'Manager' in the file
+sed -i 's/manager/Manager' employee.txt
+
+sed -i '' 's/manager/Manager/' employee.txt
+
+# Delete first line in the file
+sed -i '1d' employee.txt
+
+sed -i '' '1d' employee.txt
+
+# Delete second and third line in the file
+sed -i '2,3d' employee.txt
+
+# Print third line in the file
+sed -n '3p' employee.txt
+
+# Print third, fourth and fifth lines in the file
+sed -n '3,5p' employee.txt
+
+# Add a line after the fifth line in file
+sed -i '5a vijay attender sales 15000' employee.txt
+
+# Add a line before the fourth line in file
+sed -i '4i venkatesh attender sales 15000' employee.txt
+
+# Replace the word 'attender' with 'Attender' in the file only in lines 4 and 6
+sed -i '4,6s/attender/Attender' employee.txt
+
+sed -n '/attender/p' employee.txt
+
+# Search for 'attender' or 'director'
+sed -n '/attender/p;/director/p;' employee.txt
+
+# Identify duplicate lines
+uniq -d duplicates.txt
+
+more duplicates.txt
+
+# Identify unique values of an attribute
+awk '{print $2}' employee.txt | sort | uniq
+awk '{print $3}' employee.txt | sort | uniq

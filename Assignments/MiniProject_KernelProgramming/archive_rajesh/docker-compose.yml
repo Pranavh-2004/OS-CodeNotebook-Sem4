@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  parent_process:
+    build: .
+    container_name: parent_process_container
+    privileged: true
+    stdin_open: true
+    tty: true
+    command: ./parent_process
+
+  kernel_module:
+    build: .
+    container_name: kernel_module_container
+    privileged: true
+    stdin_open: true
+    tty: true
+    command: bash -c "insmod my_kernel_module.ko parent_pid=1 && dmesg -w"

@@ -1,0 +1,7 @@
+sunil clerk account 25000
+tarun attender sales 15000
+deepak clerk sales 23000
+venkatesh Attender sales 15000
+sunil Attender sales 13000
+satvik director purchase 80000
+vijay attender sales 15000

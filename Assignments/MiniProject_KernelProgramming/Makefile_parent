@@ -1,0 +1,10 @@
+CC=gcc
+CFLAGS=-Wall -Wextra
+
+all: parent_process
+
+parent_process: parent_process.c
+	$(CC) $(CFLAGS) -o parent_process parent_process.c
+
+clean:
+	rm -f parent_process
