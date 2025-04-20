@@ -53,6 +53,6 @@ Please refer to the **CodeExamples** folders for accurate and verified course co
 
 ## Additional Resources
 
-For excellent WebTech notes and references, check out:
+For excellent OS notes and references, check out:
 
 - [Anshul Paruchuri's Notes and Code Examples on OS](https://pesunotesproject.notion.site/Operating-Systems-1776b23e86368183803cee45ce188f21)
